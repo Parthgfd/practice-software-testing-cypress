@@ -1,0 +1,19 @@
+{
+    "products": {
+        "search": {
+            "name": "Pliers"
+        },
+        "invalid": {
+            "id": "invalid-product-id",
+            "expectedStatus": 404,
+            "expectedMessage": "Requested item not found"
+        },
+        "stub": {
+            "name": "Test Hammer",
+            "id": "fake-product-001",
+            "price": 99.99
+        }
+    }
+}
+
+
