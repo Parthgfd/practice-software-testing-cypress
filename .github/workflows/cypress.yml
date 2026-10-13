@@ -22,4 +22,4 @@ jobs:
       run: npm ci
 
     - name: Run Cypress tests
-      run: npx cypress run --spec "cypress/e2e/ciBrowser.cy.js"
+      run: npx cypress run --spec "cypress/e2e/ciconnectivity.cy.js"connectivity.cy.js
