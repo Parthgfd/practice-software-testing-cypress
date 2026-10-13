@@ -43,10 +43,20 @@ module.exports = defineConfig({
       console.log('Environment:',environment)
       console.log('Language:',language)
 
-      plugin(config);
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+
+        if (browser.family === 'chromium') {
+            launchOptions.args.push('--disable-blink-features=AutomationControlled');
+        }
+
+        return launchOptions;
+      });
+
+     
       config.baseUrl=environments[environment].baseUrl;
       config.expose.apiUrl=environments[environment].apiUrl;
       console.log('baseUrl is  ',config.baseUrl);
+      plugin(config);
 
       return config;
     },
