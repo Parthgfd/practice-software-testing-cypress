@@ -45,7 +45,8 @@ module.exports = defineConfig({
 
       on('before:browser:launch', (browser = {}, launchOptions) => {
 
-        if (browser.family === 'chromium') {
+        if (browser.family === 'chromium' || browser.name === 'electron') {
+            launchOptions.args.push('--enable-logging');
             launchOptions.args.push('--disable-blink-features=AutomationControlled');
         }
 
