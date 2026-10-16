@@ -9,8 +9,8 @@ describe('CI Browser Diagnostic', () => {
             cy.log(`Page title: ${title}`);
         });
 
-        cy.get('body').invoke('text').then((text) => {
-            cy.log(`Page content: ${text.substring(0, 300)}`);
+       cy.get('body').invoke('text').then((text) => {
+            console.log('PAGE CONTENT:', text.substring(0, 500));
         });
     });
 });
