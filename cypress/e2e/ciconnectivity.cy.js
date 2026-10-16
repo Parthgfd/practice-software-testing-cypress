@@ -1,16 +1,27 @@
 
 describe('CI Browser Diagnostic', () => {
-    it('should inspect the login page response', () => {
+    it('should report what the browser receives', () => {
         cy.visit('/auth/login', {
             failOnStatusCode: false
         });
 
-        cy.title().then((title) => {
-            cy.log(`Page title: ${title}`);
-        });
+        cy.document().then((doc) => {
+            const title = doc.title || '(empty title)';
 
-       cy.get('body').invoke('text').then((text) => {
-            console.log('PAGE CONTENT:', text.substring(0, 500));
+            const bodyText = (
+                doc.body?.innerText ||
+                doc.body?.textContent ||
+                ''
+            )
+                .replace(/\s+/g, ' ')
+                .trim()
+                .slice(0, 500) || '(empty body)';
+
+            // Intentional failure so the diagnostic appears
+            // directly in the Cypress test error output.
+            throw new Error(
+                `CI_DIAGNOSTIC | title=${JSON.stringify(title)} | body=${JSON.stringify(bodyText)}`
+            );
         });
     });
 });
