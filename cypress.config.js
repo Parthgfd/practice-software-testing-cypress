@@ -26,6 +26,12 @@ module.exports = defineConfig({
     },
     video: true,
     reporter: 'mochawesome',
+    reporterOptions: {
+    reportDir: 'mochawesome-report',
+    overwrite: false,
+    html: true,
+    json: true
+    },
   e2e: {
     //baseUrl:'https://practicesoftwaretesting.com/',//comes from config/environments
     //baseurl is a built-in cypress configuration property while apiUrl is custom property
