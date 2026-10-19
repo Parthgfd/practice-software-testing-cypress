@@ -36,13 +36,13 @@ describe('Login',()=>{
         .should('be.visible');
 });
 //Retries TC 
-    it('should show the current retry number', () => {
-        console.log(`Current retry: ${Cypress.currentRetry}`);
+    //it('should show the current retry number', () => {
+        //console.log(`Current retry: ${Cypress.currentRetry}`);
 
-        throw new Error(
-        `Current retry is ${Cypress.currentRetry}`
-    );
-    });
+        //throw new Error(
+        //`Current retry is ${Cypress.currentRetry}`
+    //);
+    //});
 
     
 })

@@ -70,6 +70,8 @@ npm ci
 
 ```bash
 npx cypress run --spec "cypress/e2e/api/productsApi.cy.js"
+npx cypress open
+npx cypress run --browser chrome --expose grepTags="@smoke"
 ```
 
 ### Open Cypress interactively

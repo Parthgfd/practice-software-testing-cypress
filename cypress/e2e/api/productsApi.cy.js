@@ -54,7 +54,7 @@ describe('Products API - API Layer', () => {
         });
 
     });
-    it.only('should search products using ProductsApi-BeforeEach', () => {
+    it('should search products using ProductsApi-BeforeEach', () => {
       cy.get('@apiData').then((data) => {
         ProductsApi.searchProducts(data.products.search.name)
             .then((response) => {
@@ -258,7 +258,7 @@ it('should search products using ProductsApi', () => {
             });
     });
 });
-it.only('should return 404 for an invalid product ID', () => {
+it('should return 404 for an invalid product ID', () => {
     cy.fixture('apiData').then((data) => {
         ProductsApi.getProductByInvalidId(
             data.products.invalid.id
