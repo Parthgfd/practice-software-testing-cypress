@@ -41,3 +41,13 @@ jobs:
            cypress/screenshots/
            cypress/videos/
           if-no-files-found: warn
+                             
+    - name: Add test run summary
+      if: always()
+      shell: bash
+      run: |
+         echo "## Cypress API Test Run" >> "$GITHUB_STEP_SUMMARY"
+         echo "" >> "$GITHUB_STEP_SUMMARY"
+         echo "- **Workflow:** Cypress Tests" >> "$GITHUB_STEP_SUMMARY"
+         echo "- **Test suite:** productsApi.cy.js" >> "$GITHUB_STEP_SUMMARY"
+         echo "- **Report:** Download the mochawesome-report artifact from this workflow run." >> "$GITHUB_STEP_SUMMARY"
