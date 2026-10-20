@@ -105,18 +105,46 @@ Actual coverage depends on the test cases currently present in the repository.
 
 ## Test Reporting
 
-Mochawesome is configured as the Cypress reporter.
+his framework uses Mochawesome to generate HTML and JSON test reports.
 
-Reports are written to:
+Report Configuration
 
-```text
-mochawesome-report/
-```
+The reporter is configured in cypress.config.js:
 
-The report configuration enables HTML and JSON output. After a test run, inspect this folder for the generated report files.
+Report directory: mochawesome-report/
+
+HTML output: enabled
+
+JSON output: enabled
+
+Video recording: enabled in Cypress configuration
+
+View Reports Locally
+
+Run the API test suite:
+
+npx cypress run --spec "cypress/e2e/api/productsApi.cy.js"
+
+After execution, check the mochawesome-report/ directory for the generated report files. Open the HTML report in a browser to review test results.
 
 ## CI/CD — GitHub Actions
+The Cypress Tests workflow uploads the mochawesome-report/ directory as a downloadable artifact.
 
+Open the repository on GitHub.
+
+Select Actions and open a completed Cypress Tests run.
+
+Find the Artifacts section.
+
+Download mochawesome-report and extract the ZIP file.
+
+Open the HTML report in a browser. The JSON file is available for machine-readable test results.
+
+The report upload step uses if: always(), so it runs even when the test step fails. Report availability still depends on whether report files were generated.
+
+### Report Validation
+
+The API workflow has been verified to pass, and its downloaded artifact contains an HTML report that opens successfully and a JSON report.
 ### API workflow
 
 The `Cypress Tests` workflow runs the API test suite on pushes to the `main` branch.
