@@ -1,0 +1,26 @@
+name: Job Outputs Demo
+
+on:
+  workflow_dispatch
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    outputs:
+       environment: ${{ steps.config.outputs.environment }}
+
+    steps:
+      - name: Generate environment value
+        id: config
+        run: echo "environment=qa" >> "$GITHUB_OUTPUT"
+
+  ui-tests:
+    needs: api-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display environment
+        run: echo "Environment is ${{ needs.api-tests.outputs.environment }}"
+
+  
