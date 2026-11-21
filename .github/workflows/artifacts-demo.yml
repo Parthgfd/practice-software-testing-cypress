@@ -33,4 +33,4 @@ jobs:
          run: |
           ls -la downloaded-report/
           test -f downloaded-report/report.html
-          echo "Report downloaded and verified successfully!"   
+          echo "Report downloaded and verified successfully"   
