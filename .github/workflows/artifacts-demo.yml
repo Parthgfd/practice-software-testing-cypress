@@ -1,0 +1,36 @@
+name: Artifacts Demo
+
+on:
+    workflow_dispatch
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate HTML report
+        run: |
+          mkdir -p reports
+          echo "<html><body><h1>Cypress Test Report</h1><p>API Tests Passed</p></body></html>" > reports/report.html
+      
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-html-report
+          path: reports/report.html
+  process-report:
+      needs: generate-report
+      runs-on: ubuntu-latest
+
+      steps:
+       - name: Download HTML report
+         uses: actions/download-artifact@v4
+         with:
+           name: sample-html-report
+           path: downloaded-report/
+
+       - name: Verify downloaded report
+         run: |
+          ls -la downloaded-report/
+          test -f downloaded-report/report.html
+          echo "Report downloaded and verified successfully!"   
