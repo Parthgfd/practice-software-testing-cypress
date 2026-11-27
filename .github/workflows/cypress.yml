@@ -8,8 +8,13 @@ on:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+    env:
+     TEST_ENV: ${{ vars.TEST_ENV }}
+     TEST_LANGUAGE: ${{ vars.TEST_LANGUAGE }}
+     TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+     TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+       
     steps:
-
     - name: Checkout code
       uses: actions/checkout@v4
 
